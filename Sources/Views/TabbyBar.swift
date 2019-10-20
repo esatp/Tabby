@@ -137,7 +137,7 @@ open class TabbyBar: UIView {
     indicator.translatesAutoresizingMaskIntoConstraints = false
     addSubview(indicator)
 
-    let indicatorLayoutAttribute: NSLayoutAttribute = Constant.Dimension.Indicator.position == .top
+    let indicatorLayoutAttribute: NSLayoutConstraint.Attribute = Constant.Dimension.Indicator.position == .top
       ? .top
       : .bottom
     constraint(indicator, attributes: .left, indicatorLayoutAttribute)
@@ -182,7 +182,7 @@ open class TabbyBar: UIView {
     }
 
     guard let imageView = cell.contentView.subviews
-      .flatMap({ $0 as? UIImageView }).first else {
+        .compactMap({ $0 as? UIImageView }).first else {
       return
     }
 

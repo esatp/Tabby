@@ -187,7 +187,7 @@ open class TabbyController: UIViewController, UINavigationControllerDelegate {
   open override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 
-    guard childViewControllers.isEmpty else {
+    guard children.isEmpty else {
       return
     }
 
@@ -216,11 +216,11 @@ open class TabbyController: UIViewController, UINavigationControllerDelegate {
 
   func prepareCurrentController() {
     let controller = items[index].controller
-    controller.removeFromParentViewController()
+    controller.removeFromParent()
     controller.view.removeFromSuperview()
     controller.view.translatesAutoresizingMaskIntoConstraints = false
 
-    addChildViewController(controller)
+    addChild(controller)
     view.insertSubview(controller.view, belowSubview: patchyView)
     tabbyBar.prepareTranslucency(translucent)
     applyNewConstraints(controller)
@@ -374,13 +374,13 @@ extension TabbyController: TabbyBarDelegate {
     }
 
     items.forEach {
-      $0.controller.removeFromParentViewController()
+        $0.controller.removeFromParent()
       $0.controller.view.removeFromSuperview()
     }
 
     controller.view.translatesAutoresizingMaskIntoConstraints = false
 
-    addChildViewController(controller)
+    addChild(controller)
     view.insertSubview(controller.view, belowSubview: patchyView)
 
     applyNewConstraints(controller)

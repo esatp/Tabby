@@ -68,7 +68,7 @@ public struct Constant {
     /// This represents the dimensions of the indicator.
     public struct Indicator {
       /// The position of the indicator, either `.top` or `.bottom`.
-      public static var position: NSLayoutAttribute = .bottom
+        public static var position: NSLayoutConstraint.Attribute = .bottom
 
       /// The width of the indicator.
       public static var width: CGFloat = 25
@@ -109,7 +109,7 @@ public struct Constant {
         delay: 0,
         usingSpringWithDamping: 0.4,
         initialSpringVelocity: 0,
-        options: UIViewAnimationOptions(),
+        options: UIView.AnimationOptions(),
         animations: {
           view.transform = CGAffineTransform.identity
       }, completion: nil)
